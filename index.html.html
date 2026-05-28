@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mandilas AirCare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f5f5f5;
+      color:#222;
+      overflow-x:hidden;
+    }
+
+    /* HEADER */
+
+    header{
+      width:100%;
+      background:#ffffff;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      min-height:36px;
+    }
+
+    .navbar{
+      width:95%;
+      margin:auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:1px 8px;
+      gap:6px;
+      flex-wrap:wrap;
+      min-height:36px;
+    }
+
+    .brand-box{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      padding:0;
+    }
+
+    .brand-box img{
+      width:72px;
+      height:72px;
+      object-fit:contain;
+      border-radius:0;
+      box-shadow:none;
+      background:transparent;
+      flex-shrink:0;
+    }
+
+    .logo{
+      display:flex;
+      flex-direction:row;
+      align-items:baseline;
+      gap:6px;
+      line-height:1;
+      font-size:18px;
+      font-weight:800;
+      color:#00A651;
+      white-space:nowrap;
+    }
+
+    .logo span{
+      color:#111;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:0.8px;
+      text-transform:uppercase;
+      margin-top:0;
+    }
+
+    nav a{
+      margin-left:8px;
+      text-decoration:none;
+      color:#222;
+      font-weight:500;
+      font-size:11px;
+      line-height:1.2;
+      transition:0.3s;
+      white-space:nowrap;
+    }
+
+    nav a:hover{
+      color:#00A651;
+    }
+
+    /* HERO */
+
+    .hero{
+      min-height:100vh;
+      width:100%;
+      background:
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=80');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      color:white;
+      padding:0 10%;
+    }
+
+    .hero-content{
+      max-width:700px;
+      animation:fadeIn 2s ease;
+    }
+
+    .hero h1{
+      font-size:65px;
+      line-height:1.2;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#ddd;
+      margin-bottom:35px;
+    }
+
+    .btn{
+      padding:15px 35px;
+      background:#00A651;
+      color:white;
+      border:none;
+      border-radius:5px;
+      font-size:16px;
+      cursor:pointer;
+      text-decoration:none;
+      transition:0.3s;
+      display:inline-block;
+    }
+
+    .btn:hover{
+      background:#008f45;
+      transform:translateY(-3px);
+    }
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .title h2{
+      font-size:42px;
+      color:#111;
+      margin-bottom:10px;
+    }
+
+    .title p{
+      color:#666;
+    }
+
+    /* ABOUT */
+
+    .about-container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .about-container img{
+      width:100%;
+      border-radius:10px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .about-text h3{
+      font-size:35px;
+      margin-bottom:20px;
+      color:#00A651;
+    }
+
+    .about-text p{
+      margin-bottom:20px;
+      color:#555;
+      line-height:1.8;
+    }
+
+    /* SERVICES */
+
+    .services{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .service-box{
+      background:white;
+      padding:40px 30px;
+      border-radius:10px;
+      text-align:center;
+      transition:0.4s;
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .service-box:hover{
+      transform:translateY(-10px);
+    }
+
+    .service-box h3{
+      margin:20px 0;
+      color:#00A651;
+    }
+
+    .service-box p{
+      color:#666;
+    }
+
+    /* STATS */
+
+    .stats{
+      background:#00A651;
+      color:white;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+      gap:30px;
+      text-align:center;
+    }
+
+    .stat h2{
+      font-size:55px;
+    }
+
+    .stat p{
+      margin-top:10px;
+      font-size:18px;
+    }
+
+    /* PROJECTS */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(300px,1fr));
+      gap:25px;
+    }
+
+    .project{
+      overflow:hidden;
+      border-radius:10px;
+      position:relative;
+    }
+
+    .project img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      transition:0.5s;
+    }
+
+    .project:hover img{
+      transform:scale(1.1);
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:white;
+      padding:50px;
+      border-radius:10px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    form{
+      display:grid;
+      gap:20px;
+    }
+
+    input, textarea{
+      width:100%;
+      padding:15px;
+      border:1px solid #ccc;
+      border-radius:5px;
+      font-size:16px;
+    }
+
+    textarea{
+      resize:none;
+      height:150px;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    footer p{
+      color:#bbb;
+    }
+
+    /* ANIMATION */
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .navbar{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:4px;
+      }
+
+      nav{
+        width:100%;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+      }
+
+      nav a{
+        margin:0 6px 2px;
+        font-size:12px;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .about-container{
+        grid-template-columns:1fr;
+      }
+
+      nav{
+        display:flex;
+      }
+
+      .brand-box img{
+        width:64px;
+        height:64px;
+      }
+
+      .logo{
+        font-size:16px;
+      }
+
+      .logo span{
+        font-size:10px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+
+    <div class="navbar">
+
+      <a class="brand-box" href="#home" aria-label="Mandilas AirCare home">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXnnQOmH4llC56v3Niv4s-Qu23aqrsq4HC_w&s" alt="Mandilas logo" />
+        <div class="logo">Mandilas <span>AirCare</span></div>
+      </a>
+
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    </div>
+
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <h1>
+        Reliable Cooling Solutions Across Nigeria
+      </h1>
+
+      <p>
+        Mandilas AirCare provides professional air-conditioning,
+        cooling, and maintenance solutions for homes, offices,
+        and commercial facilities.
+      </p>
+
+      <a href="#contact" class="btn">
+        Get Started
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+
+    <div class="title">
+      <h2>About Us</h2>
+      <p>Trusted Cooling & Technical Experts</p>
+    </div>
+
+    <div class="about-container">
+
+      <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=1200&q=80">
+
+      <div class="about-text">
+
+        <h3>Mandilas AirCare</h3>
+
+        <p>
+          Mandilas AirCare is one of Nigeria’s leading providers
+          of air-conditioning and cooling solutions. We specialize
+          in installation, maintenance, duct cleaning, refrigeration,
+          and commercial cooling systems.
+        </p>
+
+        <p>
+          Our team of experienced engineers and technicians deliver
+          quality services with professionalism, innovation,
+          and customer satisfaction.
+        </p>
+
+        <a href="#" class="btn">
+          Learn More
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERVICES -->
+
+  <section id="services">
+
+    <div class="title">
+      <h2>Our Services</h2>
+      <p>What We Offer</p>
+    </div>
+
+    <div class="services">
+
+      <div class="service-box">
+
+        <h3>AC Installation</h3>
+
+        <p>
+          Professional installation of residential and
+          commercial air-conditioning systems.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <h3>Maintenance</h3>
+
+        <p>
+          Preventive maintenance and servicing
+          to improve system efficiency.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <h3>Duct Cleaning</h3>
+
+        <p>
+          Improve indoor air quality with
+          expert duct cleaning services.
+        </p>
+
+      </div>
+
+      <div class="service-box">
+
+        <h3>Commercial Cooling</h3>
+
+        <p>
+          Industrial cooling solutions tailored
+          for business environments.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+
+  <section class="stats">
+
+    <div class="stat">
+      <h2>15+</h2>
+      <p>Years Experience</p>
+    </div>
+
+    <div class="stat">
+      <h2>500+</h2>
+      <p>Completed Projects</p>
+    </div>
+
+    <div class="stat">
+      <h2>300+</h2>
+      <p>Corporate Clients</p>
+    </div>
+
+    <div class="stat">
+      <h2>24/7</h2>
+      <p>Technical Support</p>
+    </div>
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="title">
+      <h2>Our Projects</h2>
+      <p>Recent Installations & Services</p>
+    </div>
+
+    <div class="projects">
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=80">
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80">
+      </div>
+
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80">
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="title">
+      <h2>Contact Us</h2>
+      <p>We’d love to hear from you</p>
+    </div>
+
+    <div class="contact-box">
+
+      <form action="https://formsubmit.co/cephaspeterson6@gmail.com" method="POST" class="contact-form">
+
+        <input type="text" placeholder="Your Name" required>
+
+        <input type="email" placeholder="Your Email" required>
+
+        <input type="text" placeholder="Phone Number">
+
+        <textarea placeholder="Your Message"></textarea>
+
+        <button type="submit" style="background:#00A651; color:#fff; border:1px solid #00A651; border-radius:5px; padding:14px 18px; font-weight:600; cursor:pointer;">Send Message</button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <h2>Mandilas AirCare</h2>
+
+    <br>
+
+    <p>
+      Delivering trusted cooling solutions with excellence.
+    </p>
+
+    <br>
+
+    <p>
+      © 2026 Mandilas AirCare. All Rights Reserved.
+    </p>
+
+  </footer>
+
+</body>
+</html>
